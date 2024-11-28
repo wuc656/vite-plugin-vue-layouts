@@ -1,6 +1,6 @@
 {
   "name": "vite-plugin-vue-layouts",
-  "version": "0.11.0",
+  "version": "0.11.1",
   "description": "Router based layout plugin for Vite and Vue",
   "author": "johncampionjr <npm@relate.dev>",
   "license": "MIT",
@@ -40,26 +40,26 @@
     "example:serve-ssg": "npm -C examples/ssg run serve"
   },
   "peerDependencies": {
-    "vite": "^4.0.0 || ^5.0.0",
-    "vue": "^3.2.4",
-    "vue-router": "^4.0.11"
+    "vite": "^4.0.0 || ^5.0.0 || ^6.0.0",
+    "vue": "^3.5.13",
+    "vue-router": "^4.5.0"
   },
   "dependencies": {
-    "debug": "^4.3.4",
+    "debug": "^4.3.7",
     "fast-glob": "^3.3.2"
   },
   "devDependencies": {
-    "@antfu/eslint-config": "^2.3.4",
+    "@antfu/eslint-config": "^3.11.1",
     "@types/debug": "^4.1.12",
-    "@types/node": "^20.10.3",
+    "@types/node": "^22.10.0",
     "cross-env": "^7.0.3",
-    "eslint": "^8.55.0",
-    "eslint-plugin-format": "^0.1.0",
-    "rollup": "^4.6.1",
-    "tsup": "^8.0.1",
-    "typescript": "^5.3.2",
-    "vite": "^5.0.5",
-    "vue": "^3.3.10",
-    "vue-router": "^4.2.5"
+    "eslint": "^9.15.0",
+    "eslint-plugin-format": "^0.1.2",
+    "rollup": "^4.27.4",
+    "tsup": "^8.3.5",
+    "typescript": "^5.7.2",
+    "vite": "^6.0.1",
+    "vue": "^3.5.13",
+    "vue-router": "^4.5.0"
   }
 }
