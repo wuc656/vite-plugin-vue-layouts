@@ -1,6 +1,6 @@
-# vite-plugin-vue-layouts
+# vite-plugin-vue-layouts2
 
-[![npm version](https://img.shields.io/npm/v/vite-plugin-vue-layouts)](https://www.npmjs.com/package/vite-plugin-vue-layouts)
+[![npm version](https://img.shields.io/npm/v/vite-plugin-vue-layouts2)](https://www.npmjs.com/package/vite-plugin-vue-layouts2)
 
 > Router based layout for Vue 3 applications using [Vite](https://github.com/vitejs/vite)
 
@@ -29,7 +29,7 @@ meta:
 Install Layouts:
 
 ```bash
-$ npm install -D vite-plugin-vue-layouts
+$ npm install -D vite-plugin-vue-layouts2
 ```
 
 Add to your `vite.config.js`:
@@ -37,7 +37,7 @@ Add to your `vite.config.js`:
 ```js
 import Vue from '@vitejs/plugin-vue';
 import Pages from 'vite-plugin-pages';
-import Layouts from 'vite-plugin-vue-layouts';
+import Layouts from 'vite-plugin-vue-layouts2';
 
 export default {
   plugins: [Vue(), Pages(), Layouts()],
@@ -98,7 +98,7 @@ To use custom configuration, pass your options to Layouts when instantiating the
 
 ```js
 // vite.config.js
-import Layouts from 'vite-plugin-vue-layouts';
+import Layouts from 'vite-plugin-vue-layouts2';
 
 export default {
   plugins: [
@@ -256,7 +256,7 @@ The clientSideLayout uses a simpler [virtual file](https://vitejs.dev/guide/api-
 
 ```js
 // vite.config.js
-import { ClientSideLayout } from 'vite-plugin-vue-layouts'
+import { ClientSideLayout } from 'vite-plugin-vue-layouts2'
 
 export default {
   plugins: [

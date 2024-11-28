@@ -2,6 +2,33 @@
 
 All notable changes to this project will be documented in this file.
 
+## v0.12.2...v0.12.3
+正式發布
+更新 README.md
+npm 網址更新
+Vite 6 支援
+[compare changes](https://github.com/wuc656/vite-plugin-vue-layouts/compare/v0.12.2...v0.12.3)
+
+## v0.12.1...v0.12.2
+更新 README.md
+npm 網址更新
+Vite 6 支援
+[compare changes](https://github.com/wuc656/vite-plugin-vue-layouts/compare/v0.12.1...v0.12.2)
+
+## v0.12.0...v0.12.1
+npm 網址更新
+Vite 6 支援
+[compare changes](https://github.com/wuc656/vite-plugin-vue-layouts/compare/v0.12.0...v0.12.1)
+
+## v0.11.1...v0.12.0
+Vite 6 support
+[compare changes](https://github.com/wuc656/vite-plugin-vue-layouts/compare/v0.11.1...v0.12.0)
+
+## v0.11.0...v0.11.1
+
+[compare changes](https://github.com/wuc656/vite-plugin-vue-layouts/compare/v0.11.0...v0.11.1)
+
+
 ## v0.10.0...v0.11.0
 
 [compare changes](https://github.com/johncampionjr/vite-plugin-vue-layouts/compare/v0.10.0...v0.11.0)
