@@ -1,4 +1,5 @@
 # vite-plugin-vue-layouts2
+新增 Vite 6 支援
 
 [![npm version](https://img.shields.io/npm/v/vite-plugin-vue-layouts2)](https://www.npmjs.com/package/vite-plugin-vue-layouts2)
 
