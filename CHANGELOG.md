@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file.
 
+## v0.12.3...v0.12.4
+更新套件
+ @antfu/eslint-config   ^3.11.1  →   ^3.12.0
+ @types/node           ^22.10.0  →  ^22.10.2
+ debug                   ^4.3.7  →    ^4.4.0
+ eslint                 ^9.15.0  →   ^9.17.0
+ eslint-plugin-format    ^0.1.2  →    ^0.1.3
+ rollup                 ^4.27.4  →   ^4.28.1
+ vite                    ^6.0.1  →    ^6.0.3
+[compare changes](https://github.com/wuc656/vite-plugin-vue-layouts/compare/v0.12.3...v0.12.4)
+
 ## v0.12.2...v0.12.3
 正式發布
 更新 README.md
