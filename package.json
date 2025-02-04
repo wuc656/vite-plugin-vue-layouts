@@ -55,10 +55,10 @@
     "cross-env": "^7.0.3",
     "eslint": "^9.19.0",
     "eslint-plugin-format": "^1.0.1",
-    "rollup": "^4.34.1",
+    "rollup": "^4.28.0",
     "tsup": "^8.3.6",
     "typescript": "^5.7.3",
-    "vite": "^6.0.11",
+    "vite": "^5.4.12",
     "vue": "^3.5.13",
     "vue-router": "^4.5.0"
   }
