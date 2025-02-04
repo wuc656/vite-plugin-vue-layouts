@@ -1,5 +1,6 @@
 # vite-plugin-vue-layouts2
 新增 Vite 6 支援 (add Vite 6 support)
+wuc656 自用
 
 [![npm version](https://img.shields.io/npm/v/vite-plugin-vue-layouts2)](https://www.npmjs.com/package/vite-plugin-vue-layouts2)
 
@@ -50,7 +51,7 @@ In main.ts, you need to add a few lines to import the generated code and setup t
 ## vue-router
 ```js
 import { createRouter } from 'vue-router'
-import { setupLayouts } from 'virtual:generated-layouts'
+import { setupLayouts } from 'virtual:generated-layouts2'
 import generatedRoutes from '~pages'
 
 const routes = setupLayouts(generatedRoutes)
@@ -64,7 +65,7 @@ const router = createRouter({
 ## [unplugin-vue-router](https://github.com/posva/unplugin-vue-router)
 ```js
 import { createRouter } from 'vue-router/auto'
-import { setupLayouts } from 'virtual:generated-layouts'
+import { setupLayouts } from 'virtual:generated-layouts2'
 
 const router = createRouter({
   // ...
