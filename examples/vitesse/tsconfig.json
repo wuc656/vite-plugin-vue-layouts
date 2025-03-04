@@ -13,7 +13,7 @@
     "types": [
       "vitest",
       "vite/client",
-      //"vue/ref-macros",
+      // "vue/ref-macros",
       "vite-plugin-vue-layouts2/client",
       "vite-plugin-pwa/client",
       "unplugin-vue-macros/macros-global"
