@@ -7,7 +7,7 @@
   "homepage": "https://github.com/wuc656/vite-plugin-vue-layouts",
   "repository": {
     "type": "git",
-    "url": "https://github.com/wuc656/vite-plugin-vue-layouts"
+    "url": "git+https://github.com/wuc656/vite-plugin-vue-layouts.git"
   },
   "bugs": "https://github.com/wuc656/vite-plugin-vue-layouts",
   "exports": {
