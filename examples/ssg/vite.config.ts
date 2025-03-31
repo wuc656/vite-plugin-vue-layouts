@@ -1,6 +1,6 @@
 import { defineConfig } from 'vite'
 import Vue from '@vitejs/plugin-vue'
-import Pages from 'vite-plugin-pages'
+import Pages from 'vite-plugin-pages2'
 import Layouts from 'vite-plugin-vue-layouts2'
 import Markdown from 'unplugin-vue-markdown/vite'
 

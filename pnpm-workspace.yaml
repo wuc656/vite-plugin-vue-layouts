@@ -1,4 +1,7 @@
 packages:
   - examples/*
 onlyBuiltDependencies:
+  - cypress
   - esbuild
+  - simple-git-hooks
+  - vue-demi

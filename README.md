@@ -38,7 +38,7 @@ Add to your `vite.config.js`:
 
 ```js
 import Vue from '@vitejs/plugin-vue';
-import Pages from 'vite-plugin-pages';
+import Pages from 'vite-plugin-pages2';
 import Layouts from 'vite-plugin-vue-layouts2';
 
 export default {
