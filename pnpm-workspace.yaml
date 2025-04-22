@@ -4,4 +4,5 @@ onlyBuiltDependencies:
   - cypress
   - esbuild
   - simple-git-hooks
+  - unrs-resolver
   - vue-demi
