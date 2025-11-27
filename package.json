@@ -1,6 +1,6 @@
 {
   "name": "vite-plugin-vue-layouts2",
-  "version": "0.14.3",
+  "version": "0.14.4",
   "description": "Router based layout plugin for Vite and Vue",
   "author": "wuc656 <wuc656@gmail.com> & johncampionjr <npm@relate.dev>",
   "license": "MIT",
@@ -49,17 +49,17 @@
     "fast-glob": "^3.3.3"
   },
   "devDependencies": {
-    "@antfu/eslint-config": "^5.4.1",
+    "@antfu/eslint-config": "^6.2.0",
     "@types/debug": "^4.1.12",
-    "@types/node": "^24.7.0",
+    "@types/node": "^24.10.1",
     "cross-env": "^10.1.0",
-    "eslint": "^9.37.0",
+    "eslint": "^9.39.1",
     "eslint-plugin-format": "^1.0.2",
-    "rollup": "^4.52.4",
-    "tsup": "^8.5.0",
+    "rollup": "^4.53.3",
+    "tsup": "^8.5.1",
     "typescript": "^5.9.3",
-    "vite": "^7.1.9",
-    "vue": "^3.5.22",
-    "vue-router": "^4.5.1"
+    "vite": "^7.2.4",
+    "vue": "^3.5.25",
+    "vue-router": "^4.6.3"
   }
 }
