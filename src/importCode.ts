@@ -1,5 +1,5 @@
-import { join, parse } from 'path'
-import { ResolvedOptions, FileContainer } from './types'
+import type { FileContainer, ResolvedOptions } from './types'
+import { join, parse } from 'node:path'
 
 export function getImportCode(files: FileContainer[], options: ResolvedOptions) {
   const imports: string[] = []
@@ -8,8 +8,8 @@ export function getImportCode(files: FileContainer[], options: ResolvedOptions) 
 
   for (const __ of files) {
     for (const file of __.files) {
-      //const path = __.path.substr(0, 1) === '/' ? `${__.path}/${file}` : `/${__.path}/${file}`
-      const path = __.path.slice(0, 1) === '/' ? `${__.path}/${file}` : `/${__.path}/${file}`;
+      // const path = __.path.substr(0, 1) === '/' ? `${__.path}/${file}` : `/${__.path}/${file}`
+      const path = __.path.slice(0, 1) === '/' ? `${__.path}/${file}` : `/${__.path}/${file}`
       const parsed = parse(file)
       const name = join(parsed.dir, parsed.name).replace(/\\/g, '/')
       if (options.importMode(name) === 'sync') {
