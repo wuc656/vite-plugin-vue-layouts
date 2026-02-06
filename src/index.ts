@@ -6,7 +6,7 @@ import type {
   UserOptions,
 } from './types'
 import { resolve } from 'node:path'
-import process from 'node:process';
+import process from 'node:process'
 import { createVirtualModuleCode } from './clientSide'
 import { getFilesFromPath } from './files'
 import { getImportCode } from './importCode'
@@ -16,7 +16,6 @@ import { debug, normalizePath, resolveDirs } from './utils'
 
 const MODULE_IDS = ['layouts-generated', 'virtual:generated-layouts']
 const MODULE_ID_VIRTUAL = '/@vite-plugin-vue-layouts/generated-layouts'
-
 
 export function defaultImportMode(name: string) {
   if (process.env.VITE_SSG)
@@ -116,7 +115,7 @@ export default function Layout(userOptions: UserOptions = {}): Plugin {
         const container: FileContainer[] = []
 
         for (const dir of layoutDirs) {
-          const layoutsDirPath = dir.substr(0, 1) === '/'
+          const layoutsDirPath = dir.slice(0, 1) === '/'
             ? normalizePath(dir)
             : normalizePath(resolve(config.root, dir))
 

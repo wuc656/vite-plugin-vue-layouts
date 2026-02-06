@@ -1,8 +1,9 @@
 import { posix } from 'node:path'
 
 function normalizePath(path: string) {
-  path = path.startsWith('/') ? path : `/${path}`
-  return posix.normalize(path)
+  // path = path.startsWith('/') ? path : `/${path}`
+  // return posix.normalize(path)
+  return posix.normalize(path.startsWith('/') ? path : `/${path}`)
 }
 
 interface VirtualModuleCodeOptions {
