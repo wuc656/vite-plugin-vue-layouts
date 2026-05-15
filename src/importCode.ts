@@ -6,20 +6,20 @@ export function getImportCode(files: FileContainer[], options: ResolvedOptions) 
   const head: string[] = []
   let id = 0
 
-  for (const __ of files) {
-    for (const file of __.files) {
-      // const path = __.path.substr(0, 1) === '/' ? `${__.path}/${file}` : `/${__.path}/${file}`
-      const path = __.path.slice(0, 1) === '/' ? `${__.path}/${file}` : `/${__.path}/${file}`
+  for (const { path: dirPath, files: fileList } of files) {
+    const prefix = dirPath.startsWith('/') ? dirPath : `/${dirPath}`
+    for (const file of fileList) {
+      const filePath = `${prefix}/${file}`
       const parsed = parse(file)
-      const name = join(parsed.dir, parsed.name).replace(/\\/g, '/')
+      const name = join(parsed.dir, parsed.name).replaceAll('\\', '/')
+      
       if (options.importMode(name) === 'sync') {
-        const variable = `__layout_${id}`
-        head.push(`import ${variable} from '${path}'`)
+        const variable = `__layout_${id++}`
+        head.push(`import ${variable} from '${filePath}'`)
         imports.push(`'${name}': ${variable},`)
-        id += 1
       }
       else {
-        imports.push(`'${name}': () => import('${path}'),`)
+        imports.push(`'${name}': () => import('${filePath}'),`)
       }
     }
   }

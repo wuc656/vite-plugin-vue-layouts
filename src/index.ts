@@ -79,31 +79,24 @@ export default function Layout(userOptions: UserOptions = {}): Plugin {
         }
       }
 
-      //       const absolutePagesDir = options.pagesDir ? normalizePath(resolve(process.cwd(), options.pagesDir)) : null
+      const normalizedLayoutDirs = layoutDirs.map(d => normalizePath(d))
+      const normalizedPagesDirs = pagesDirs.map(d => normalizePath(d))
 
       const updateVirtualModule = (path: string) => {
-        path = normalizePath(path)
+        const normalizedPath = normalizePath(path)
 
-        if (pagesDirs.length === 0
-          || pagesDirs.some(dir => path.startsWith(dir))
-          || layoutDirs.some(dir => path.startsWith(dir))) {
-          debug('reload', path)
+        if (normalizedPagesDirs.length === 0
+          || normalizedLayoutDirs.some(dir => normalizedPath.startsWith(dir))
+          || normalizedPagesDirs.some(dir => normalizedPath.startsWith(dir))) {
+          debug('reload', normalizedPath)
           const module = moduleGraph.getModuleById(MODULE_ID_VIRTUAL)
           reloadModule(module)
         }
       }
 
-      watcher.on('add', (path) => {
-        updateVirtualModule(path)
-      })
-
-      watcher.on('unlink', (path) => {
-        updateVirtualModule(path)
-      })
-
-      watcher.on('change', async (path) => {
-        updateVirtualModule(path)
-      })
+      watcher.on('add', updateVirtualModule)
+      watcher.on('unlink', updateVirtualModule)
+      watcher.on('change', updateVirtualModule)
     },
     resolveId(id) {
       return MODULE_IDS.includes(id) || MODULE_IDS.some(i => id.startsWith(i))
@@ -167,16 +160,14 @@ export function ClientSideLayout(options?: clientSideOptions): Plugin {
 function canEnableClientLayout(options: UserOptions) {
   const keys = Object.keys(options)
 
-  // Non isomorphic options
-  if (keys.length > 2 || keys.some(key => !['layoutDirs', 'defaultLayout'].includes(key))) {
+  // Non isomorphic options: more than 2 keys or keys other than 'layoutsDirs', 'defaultLayout'
+  if (keys.length > 2 || keys.some(key => !['layoutsDirs', 'defaultLayout'].includes(key))) {
     return false
   }
-  //  arrays and glob cannot be isomorphic either
-  if (options.layoutsDirs && (Array.isArray(options.layoutsDirs) || options.layoutsDirs.includes('*'))) {
-    return false
-  }
-
-  return true
+  
+  // Arrays and glob patterns cannot be isomorphic
+  const layoutsDirs = options.layoutsDirs
+  return !(layoutsDirs && (Array.isArray(layoutsDirs) || layoutsDirs.includes('*')))
 }
 
 export * from './types'
