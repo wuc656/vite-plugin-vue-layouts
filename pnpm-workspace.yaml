@@ -1,5 +1,10 @@
 packages:
   - examples/*
+allowBuilds:
+  cypress: true
+  esbuild: true
+  simple-git-hooks: true
+  vue-demi: true
 onlyBuiltDependencies:
   - cypress
   - esbuild
