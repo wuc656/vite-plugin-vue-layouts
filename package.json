@@ -1,6 +1,6 @@
 {
   "name": "vite-plugin-vue-layouts2",
-  "version": "0.14.12",
+  "version": "0.14.13",
   "description": "Router based layout plugin for Vite and Vue",
   "author": "wuc656 <wuc656@gmail.com> & johncampionjr <npm@relate.dev>",
   "license": "MIT",
@@ -30,7 +30,7 @@
   ],
   "scripts": {
     "dev": "npm run build -- --watch",
-    "build": "tsup src/index.ts --dts --format cjs,esm",
+    "build": "tsup src/index.ts --format cjs,esm && tsc --emitDeclarationOnly",
     "prepublishOnly": "npm run build",
     "release": "npx bumpp --commit --tag --push && npm publish",
     "example:dev": "npm -C examples/spa run dev",
@@ -49,17 +49,17 @@
     "fast-glob": "^3.3.3"
   },
   "devDependencies": {
-    "@antfu/eslint-config": "^9.0.0",
+    "@antfu/eslint-config": "^9.3.0",
     "@types/debug": "^4.1.13",
-    "@types/node": "^25.9.1",
+    "@types/node": "^26.3.0",
     "cross-env": "^10.1.0",
-    "eslint": "^10.4.1",
+    "eslint": "^10.9.1",
     "eslint-plugin-format": "^2.0.1",
-    "rollup": "^4.61.1",
+    "rollup": "^4.62.5",
     "tsup": "^8.5.1",
-    "typescript": "^6.0.3",
-    "vite": "^8.0.16",
-    "vue": "^3.5.35",
-    "vue-router": "^5.1.0"
+    "typescript": "^7.0.2",
+    "vite": "^8.2.2",
+    "vue": "^3.5.41",
+    "vue-router": "^5.2.0"
   }
 }

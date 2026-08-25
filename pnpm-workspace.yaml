@@ -5,6 +5,9 @@ allowBuilds:
   esbuild: true
   simple-git-hooks: true
   vue-demi: true
+minimumReleaseAgeExclude:
+  - '@types/node@26.3.0'
+  - eslint@10.9.1
 onlyBuiltDependencies:
   - cypress
   - esbuild
