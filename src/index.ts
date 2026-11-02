@@ -21,7 +21,9 @@ export function defaultImportMode(name: string) {
   if (process.env.VITE_SSG)
     return 'sync'
 
-  return name === 'default' ? 'sync' : 'async'
+  return name === 'default'
+    ? 'sync'
+    : 'async'
 }
 
 function resolveOptions(userOptions: UserOptions): ResolvedOptions {
@@ -164,7 +166,7 @@ function canEnableClientLayout(options: UserOptions) {
   if (keys.length > 2 || keys.some(key => !['layoutsDirs', 'defaultLayout'].includes(key))) {
     return false
   }
-  
+
   // Arrays and glob patterns cannot be isomorphic
   const layoutsDirs = options.layoutsDirs
   return !(layoutsDirs && (Array.isArray(layoutsDirs) || layoutsDirs.includes('*')))

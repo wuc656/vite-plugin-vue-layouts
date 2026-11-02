@@ -15,7 +15,12 @@ export async function getFilesFromPath(path: string, options: ResolvedOptions): 
   debug(extensions)
 
   const files = await fg(`**/*.${ext}`, {
-    ignore: ['node_modules', '.git', '**/__*__/*', ...exclude],
+    ignore: [
+      'node_modules',
+      '.git',
+      '**/__*__/*',
+      ...exclude,
+    ],
     onlyFiles: true,
     cwd: path,
   })

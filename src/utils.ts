@@ -3,7 +3,9 @@ import Debug from 'debug'
 import fg from 'fast-glob'
 
 export function extensionsToGlob(extensions: string[]) {
-  return extensions.length > 1 ? `{${extensions.join(',')}}` : extensions[0] || ''
+  return extensions.length > 1
+    ? `{${extensions.join(',')}}`
+    : extensions[0] || ''
 }
 
 export function normalizePath(str: string): string {
@@ -19,13 +21,15 @@ export function pathToName(filepath: string) {
 export function resolveDirs(dirs: string | string[] | null, root: string) {
   if (dirs === null)
     return []
-  
-  const dirsArray = Array.isArray(dirs) ? dirs : [dirs]
+
+  const dirsArray = Array.isArray(dirs)
+    ? dirs
+    : [dirs]
   const dirsResolved: string[] = []
 
   for (const dir of dirsArray) {
     if (dir.includes('**')) {
-      fg.sync(dir, { onlyDirectories: true }).forEach(match => {
+      fg.sync(dir, { onlyDirectories: true }).forEach((match) => {
         dirsResolved.push(normalizePath(resolve(root, match)))
       })
     }

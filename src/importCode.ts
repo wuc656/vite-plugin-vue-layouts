@@ -7,12 +7,14 @@ export function getImportCode(files: FileContainer[], options: ResolvedOptions) 
   let id = 0
 
   for (const { path: dirPath, files: fileList } of files) {
-    const prefix = dirPath.startsWith('/') ? dirPath : `/${dirPath}`
+    const prefix = dirPath.startsWith('/')
+      ? dirPath
+      : `/${dirPath}`
     for (const file of fileList) {
       const filePath = `${prefix}/${file}`
       const parsed = parse(file)
       const name = join(parsed.dir, parsed.name).replaceAll('\\', '/')
-      
+
       if (options.importMode(name) === 'sync') {
         const variable = `__layout_${id++}`
         head.push(`import ${variable} from '${filePath}'`)
