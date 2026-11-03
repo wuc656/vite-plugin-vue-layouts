@@ -5,7 +5,6 @@ import type {
   ResolvedOptions,
   UserOptions,
 } from './types'
-import { resolve } from 'node:path'
 import process from 'node:process'
 import { createVirtualModuleCode } from './clientSide'
 import { getFilesFromPath } from './files'
@@ -56,8 +55,6 @@ export default function Layout(userOptions: UserOptions = {}): Plugin {
   let layoutDirs: string[]
   let pagesDirs: string[]
 
-  // const pagesDirs = resolveDirs(options.pagesDirs, config.root)
-
   return {
     name: 'vite-plugin-vue-layouts2',
     enforce: 'pre',
@@ -67,7 +64,7 @@ export default function Layout(userOptions: UserOptions = {}): Plugin {
       pagesDirs = resolveDirs(options.pagesDirs, config.root)
     },
     configureServer({ moduleGraph, watcher, ws }) {
-      watcher.add(options.layoutsDirs)
+      watcher.add(layoutDirs)
 
       const reloadModule = (module: ModuleNode | undefined, path = '*') => {
         if (module) {
@@ -110,9 +107,7 @@ export default function Layout(userOptions: UserOptions = {}): Plugin {
         const container: FileContainer[] = []
 
         for (const dir of layoutDirs) {
-          const layoutsDirPath = dir.slice(0, 1) === '/'
-            ? normalizePath(dir)
-            : normalizePath(resolve(config.root, dir))
+          const layoutsDirPath = normalizePath(dir)
 
           debug('Loading Layout Dir: %O', layoutsDirPath)
 

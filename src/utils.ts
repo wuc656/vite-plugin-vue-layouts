@@ -14,10 +14,6 @@ export function normalizePath(str: string): string {
 
 export const debug = Debug('vite-plugin-layouts')
 
-export function pathToName(filepath: string) {
-  return filepath.replaceAll(/[_.\-\\/]/g, '_').replaceAll(/[[:\]()]/g, '$')
-}
-
 export function resolveDirs(dirs: string | string[] | null, root: string) {
   if (dirs === null)
     return []
