@@ -1,3 +1,4 @@
+import { resolve } from 'node:path'
 import { describe, expect, it } from 'vitest'
 import { getImportCode } from '../src/importCode'
 import { defaultImportMode } from '../src/index'
@@ -69,11 +70,14 @@ describe('utils', () => {
   })
 
   it('resolveDirs handles strings, arrays and null', () => {
-    expect(resolveDirs(null, 'C:/root')).toEqual([])
-    const single = resolveDirs('src/layouts', 'C:/root')
-    expect(single).toEqual(['C:/root/src/layouts'])
-    const multiple = resolveDirs(['dir1', 'dir2'], 'C:/root')
-    expect(multiple).toEqual(['C:/root/dir1', 'C:/root/dir2'])
+    expect(resolveDirs(null, '/root')).toEqual([])
+    const single = resolveDirs('src/layouts', '/root')
+    expect(single).toEqual([normalizePath(resolve('/root', 'src/layouts'))])
+    const multiple = resolveDirs(['dir1', 'dir2'], '/root')
+    expect(multiple).toEqual([
+      normalizePath(resolve('/root', 'dir1')),
+      normalizePath(resolve('/root', 'dir2')),
+    ])
   })
 })
 
