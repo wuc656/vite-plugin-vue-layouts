@@ -63,14 +63,17 @@ export default function Layout(userOptions: UserOptions = {}): Plugin {
       layoutDirs = resolveDirs(options.layoutsDirs, config.root)
       pagesDirs = resolveDirs(options.pagesDirs, config.root)
     },
-    configureServer({ moduleGraph, watcher, ws }) {
+    configureServer(server) {
+      const { moduleGraph, watcher, ws } = server
+      const hot = (server as any).hot
       watcher.add(layoutDirs)
 
       const reloadModule = (module: ModuleNode | undefined, path = '*') => {
         if (module) {
           moduleGraph.invalidateModule(module)
-          if (ws) {
-            ws.send({
+          const channel = hot || ws
+          if (channel) {
+            channel.send({
               path,
               type: 'full-reload',
             })
@@ -135,7 +138,7 @@ export function ClientSideLayout(options?: clientSideOptions): Plugin {
   return {
     name: 'vite-plugin-vue-layouts2',
     resolveId(id) {
-      const MODULE_ID = MODULE_IDS.find(MODULE_ID => id === MODULE_ID)
+      const MODULE_ID = MODULE_IDS.find(mId => id === mId || id.startsWith(`${mId}?`))
       if (MODULE_ID) {
         return `\0${MODULE_ID}`
       }

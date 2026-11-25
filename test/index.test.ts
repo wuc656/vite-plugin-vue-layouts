@@ -1,7 +1,7 @@
 import { resolve } from 'node:path'
 import { describe, expect, it } from 'vitest'
 import { getImportCode } from '../src/importCode'
-import { defaultImportMode } from '../src/index'
+import { ClientSideLayout, defaultImportMode } from '../src/index'
 import { createSetupLayoutsCode } from '../src/RouteLayout'
 import { extensionsToGlob, normalizePath, resolveDirs } from '../src/utils'
 
@@ -72,7 +72,9 @@ describe('utils', () => {
   it('resolveDirs handles strings, arrays and null', () => {
     expect(resolveDirs(null, '/root')).toEqual([])
     const single = resolveDirs('src/layouts', '/root')
-    expect(single).toEqual([normalizePath(resolve('/root', 'src/layouts'))])
+    expect(single).toEqual([
+      normalizePath(resolve('/root', 'src/layouts')),
+    ])
     const multiple = resolveDirs(['dir1', 'dir2'], '/root')
     expect(multiple).toEqual([
       normalizePath(resolve('/root', 'dir1')),
@@ -169,5 +171,26 @@ describe('createSetupLayoutsCode runtime behavior', () => {
     expect(filterFn()).toEqual([
       { path: '/inner', meta: {} },
     ])
+  })
+})
+
+describe('plugin resolveId and load', () => {
+  it('clientSideLayout resolves virtual module ids with query parameters', () => {
+    const plugin = ClientSideLayout()
+    const resolveId = plugin.resolveId as any
+    expect(resolveId('layouts-generated')).toBe('\0layouts-generated')
+    expect(resolveId('virtual:generated-layouts')).toBe('\0virtual:generated-layouts')
+    expect(resolveId('layouts-generated?raw')).toBe('\0layouts-generated')
+    expect(resolveId('virtual:generated-layouts?vue&type=script')).toBe('\0virtual:generated-layouts')
+    expect(resolveId('other-module')).toBeUndefined()
+  })
+
+  it('clientSideLayout loads code for resolved id', async () => {
+    const plugin = ClientSideLayout({ defaultLayout: 'custom' })
+    const load = plugin.load as any
+    const code = await load('\0layouts-generated')
+    expect(code).toBeDefined()
+    expect(code).toContain('createGetRoutes')
+    expect(code).toContain('setupLayouts')
   })
 })
